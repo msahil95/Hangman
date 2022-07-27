@@ -3,7 +3,7 @@ Make sure you complete all the TODOs in this file.
 The prints have to contain the same text as indicated, don't add any more prints,
 or you will get 0 for this assignment.
 '''
-import random
+import random 
 
 class Hangman:
     '''
@@ -32,7 +32,7 @@ class Hangman:
         The number of lives the player has
     list_letters: list
         A list of the letters that have already been tried
-
+ Print()
     Methods:
     -------
     check_letter(letter)
@@ -54,6 +54,7 @@ class Hangman:
         If it is not, it reduces the number of lives by 1.
 
         Parameters:
+        
         ----------
         letter: str
             The letter to be checked
