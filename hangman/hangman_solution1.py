@@ -1,5 +1,7 @@
 
+
 import random
+
 
 
 class Hangman:
@@ -53,7 +55,7 @@ class Hangman:
 
     def check_letter(self, letter):
         letter = letter.lower()
-       
+        self.list_letters.append(letter)       
         if letter in self.word:
         
             for index,character in  enumerate(self.word): 
@@ -62,23 +64,19 @@ class Hangman:
                     self.word_guessed[index] = letter
         #if letter in self.word:
                     print(f"{letter} in the word ")
-                    print (self.word_guessed) 
+                    print (self.word_guessed)
+                    if not '_' in self.word_guessed:
+                        print ("Congratulations, you won!")
+                        exit()
+                        
+                        #break from ast import Break
         else:
 
             self.num_lives  -= 1         
              
             print(f"number of live let {self.num_lives}")         
-            #self.list_letters.append(letter)   
-             #for i in self.num_lives:
-              #  i == self.num_lives 
-               # i -=1
-                #if i == 4:
-                 #print ("\|\||")
-                #elif i == 3                    
-                            
-
-                                                        
-        pass
+          
+            
 
     def ask_letter(self):
         '''
@@ -88,36 +86,32 @@ class Hangman:
         If it passes both checks, it calls the check_letter method.
         '''
         
-        while True:      
-            letter = input("pick a letter: ")
-            if len(letter) > 1:
+        #while True:      
+        letter = input("pick a letter: ")
+        if len(letter) > 1:
               print("Please, enter just one character" )
-            elif letter in self.list_letters:
-                 print (f" {letter}  was already tried" )
-            else :
+        elif letter in self.list_letters:
+                print(f" {letter}  was already tried" )
+        else :
                 #self.list_letters.append(letter)
-                print(self.list_letters)
-                self.check_letter(letter)
+                #print(self.list_letters)
+            self.check_letter(letter)
 
             
         
-        pass
+        #pass
 
 def play_game(word_list):
     # As an aid, part of the code is already provided:
     game = Hangman(word_list, num_lives=5)
     while True:
-        if game.num_lives ==0:
+        if game.num_lives > 0:
+                game.ask_letter()
+        else: 
+            game.num_lives == 0
             print(f"You ran out of lives. The word was {game.word}") 
-            break        
-        elif game.num_letters > 0:
-            game.ask_letter()
-    
-    
-        else:
-            print ("Congratulations, you won!")
-            break 
-       
+            break         
+          
     
      
         pass
